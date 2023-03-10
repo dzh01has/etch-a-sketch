@@ -1,30 +1,40 @@
-var canvasSize = prompt("Enter canvas size:", "16");
+var canvasSize; 
 var trueSize = canvasSize*canvasSize;
 const contGrids = document.querySelector('.contGrids');
+const resetButton = document.getElementById('btn');
+const resizeButton = document.getElementById('btn2');
+
+
+function askPrompt()
+{
+    canvasSize = prompt("Enter canvas size (max: 100)", "16");
+    trueSize = canvasSize*canvasSize;   
+};
+
 
 function createGrid()
 {
-    for (let i = 0; i < trueSize; i++) 
-            {
-            const square = document.createElement('div');
-            square.classList.add('square');
-            contGrids.appendChild(square);
-            };
-}
 
-createGrid();
-
-const resizeButton = document.getElementById('btn2');
-resizeButton.addEventListener
-(
-    'click', function()
+    if (canvasSize <= 100)
     {
-        contGrids.innerHTML = "";
-        canvasSize = prompt("Enter canvas size:", "16");
-        trueSize = canvasSize*canvasSize;
-        createGrid();
+        for (let i = 0; i < trueSize; i++) 
+                {
+                    const square = document.createElement('div');
+                    square.classList.add('square');
+                    contGrids.appendChild(square);
+                };
     }
-);
+    else if (canvasSize > 100)
+    {
+        alert("Canvas Size too big! Please input a number lower then 100!")
+        askPrompt();
+        if (canvasSize <= 100)
+        {
+            trueSize = canvasSize*canvasSize;
+            createGrid();
+        }
+    }            
+};
 
 
 contGrids.addEventListener
@@ -37,9 +47,9 @@ contGrids.addEventListener
             target.classList.add('permahover')
         }
     }
-)
+);
 
-const resetButton = document.getElementById('btn');
+
 resetButton.addEventListener
 (
     'click', function()
@@ -47,9 +57,19 @@ resetButton.addEventListener
       contGrids.innerHTML = "";
       createGrid();
     }
-)
+);
 
 
+resizeButton.addEventListener
+(
+    'click', function()
+    {
+        contGrids.innerHTML = "";
+        askPrompt();
+        createGrid();
+    }
+);
 
-
+askPrompt();
+createGrid();
  
