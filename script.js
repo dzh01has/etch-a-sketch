@@ -25,8 +25,8 @@ function createGrid()
                     const square = document.createElement('div');
                     square.classList.add('square');
                     contGrids.appendChild(square);
-                    square.style.width = `calc(600px/${canvasSize})`;
-                    square.style.height = `calc(600px/${canvasSize})`;
+                    square.style.width = `calc(800px/${canvasSize})`;
+                    square.style.height =`calc(800px/${canvasSize})`;
                 };
     }
     else if (canvasSize > 100)
@@ -39,8 +39,8 @@ function createGrid()
             const square = document.createElement('div');
             square.classList.add('square');
             contGrids.appendChild(square);
-            square.style.setProperty('width', `calc(600px/canvasSize)`);
-            square.style.setProperty('height', `calc(600px/canvasSize)`);
+            square.style.width = `calc(800px/${canvasSize})`;
+            square.style.height =`calc(800px/${canvasSize})`;
         }
     }
 };
