@@ -45,9 +45,9 @@ body
     flex-wrap: wrap;
     flex: 1 1 auto;
     background-color: white;
-    outline-style: solid;
+    /*outline-style: solid;
     outline-width: 1px;
-    outline-color: black;
+    outline-color: black;*/
 }
 
 .btnContainer
@@ -71,6 +71,6 @@ button
 
 .permahover 
 {
-    background: black;
+    background-color: black;
 }
 
