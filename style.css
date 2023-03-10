@@ -33,9 +33,10 @@ body
     display: flex;
     flex-wrap: wrap;
     align-self: center;
+    /*
     outline-style: solid;
     outline-width: 1px;
-    outline-color: violet;
+    outline-color: violet;*/
 }
 
 .square
