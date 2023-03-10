@@ -2,8 +2,10 @@ var canvasSize;
 var trueSize = canvasSize*canvasSize;
 const contGrids = document.querySelector('.contGrids');
 const square = document.createElement('div');
+const newColor = document.querySelector('.permahover');
 const resetButton = document.getElementById('btn');
 const resizeButton = document.getElementById('btn2');
+
 
 
 function askPrompt()
@@ -15,9 +17,6 @@ function askPrompt()
 
 function createGrid()
 {
-    /*square.style.setProperty('width', 'calc(600px/canvasSize)');
-    square.style.setProperty('height', 'calc(600px/canvasSize)');*/
-
     if (canvasSize <= 100)
     {
         for (let i = 0; i < trueSize; i++) 
@@ -45,6 +44,21 @@ function createGrid()
     }
 };
 
+function randomizeColor()
+{
+    let color = "#";
+    let hexValues = "0123456789ABCDEF"; 
+
+    for (let i = 0; i < 6; i++) 
+    {
+        color += hexValues[Math.floor(Math.random()*16)];
+        
+    }
+
+    console.log(color)
+    return  color;
+}
+
 
 contGrids.addEventListener
 (
@@ -53,7 +67,7 @@ contGrids.addEventListener
         var target = e.target
         if (target !== contGrids)
         {
-            target.classList.add('permahover')
+            target.style.backgroundColor = randomizeColor();
         }
     }
 );
@@ -88,4 +102,5 @@ do
     askPrompt();
 }while(canvasSize == null || canvasSize == "")
 createGrid();
+randomizeColor();
  
