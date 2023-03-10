@@ -2,10 +2,8 @@ var canvasSize;
 var trueSize = canvasSize*canvasSize;
 const contGrids = document.querySelector('.contGrids');
 const square = document.createElement('div');
-const newColor = document.querySelector('.permahover');
 const resetButton = document.getElementById('btn');
 const resizeButton = document.getElementById('btn2');
-
 
 
 function askPrompt()
@@ -44,6 +42,7 @@ function createGrid()
     }
 };
 
+
 function randomizeColor()
 {
     let color = "#";
@@ -52,10 +51,8 @@ function randomizeColor()
     for (let i = 0; i < 6; i++) 
     {
         color += hexValues[Math.floor(Math.random()*16)];
-        
     }
 
-    console.log(color)
     return  color;
 }
 
