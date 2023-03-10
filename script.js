@@ -1,6 +1,7 @@
 var canvasSize; 
 var trueSize = canvasSize*canvasSize;
 const contGrids = document.querySelector('.contGrids');
+const square = document.createElement('div');
 const resetButton = document.getElementById('btn');
 const resizeButton = document.getElementById('btn2');
 
@@ -14,6 +15,8 @@ function askPrompt()
 
 function createGrid()
 {
+    /*square.style.setProperty('width', 'calc(600px/canvasSize)');
+    square.style.setProperty('height', 'calc(600px/canvasSize)');*/
 
     if (canvasSize <= 100)
     {
@@ -22,6 +25,8 @@ function createGrid()
                     const square = document.createElement('div');
                     square.classList.add('square');
                     contGrids.appendChild(square);
+                    square.style.width = `calc(600px/${canvasSize})`;
+                    square.style.height = `calc(600px/${canvasSize})`;
                 };
     }
     else if (canvasSize > 100)
@@ -31,9 +36,13 @@ function createGrid()
         if (canvasSize <= 100)
         {
             trueSize = canvasSize*canvasSize;
-            createGrid();
+            const square = document.createElement('div');
+            square.classList.add('square');
+            contGrids.appendChild(square);
+            square.style.setProperty('width', `calc(600px/canvasSize)`);
+            square.style.setProperty('height', `calc(600px/canvasSize)`);
         }
-    }            
+    }
 };
 
 
@@ -65,11 +74,18 @@ resizeButton.addEventListener
     'click', function()
     {
         contGrids.innerHTML = "";
-        askPrompt();
+        do
+        {
+            askPrompt();
+        }while(canvasSize == null || canvasSize == "")
+        trueSize = canvasSize*canvasSize;
         createGrid();
     }
 );
 
-askPrompt();
+do
+{
+    askPrompt();
+}while(canvasSize == null || canvasSize == "")
 createGrid();
  
