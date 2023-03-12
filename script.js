@@ -36,8 +36,8 @@ function createGrid()
             const square = document.createElement('div');
             square.classList.add('square');
             contGrids.appendChild(square);
-            square.style.width = `calc(800px/${canvasSize})`;
-            square.style.height =`calc(800px/${canvasSize})`;
+            square.style.width = `calc(${contGrids.width}/${canvasSize})`;
+            square.style.height =`calc(${contGrids.height}/${canvasSize})`;
         }
     }
 };
