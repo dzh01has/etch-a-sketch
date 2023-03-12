@@ -94,6 +94,7 @@ resizeButton.addEventListener
     }
 );
 
+
 do
 {
     askPrompt();
