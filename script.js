@@ -1,16 +1,18 @@
-var canvasSize; 
-var trueSize = canvasSize*canvasSize;
-var eraserToggle = false;
-var rainbowToggle = false;
-var defaultColor = true;
+/* Messy code and not a very elegant solution, but it functions perfectly! */
+
+let canvasSize; 
+let trueSize = canvasSize*canvasSize;
+let eraserToggle = false;
+let rainbowToggle = false;
+let defaultColor = true;
 const contGrids = document.querySelector('.contGrids');
 const square = document.createElement('div');
 const resetButton = document.getElementById('btn');
 const resizeButton = document.getElementById('btn2');
 const eraserButton = document.getElementById('btn3');
 const rainbowButton = document.getElementById('btn4');
-var changedColor;
-var toggleNewColor = false;
+let changedColor;
+let toggleNewColor = false;
 
 
 function askPrompt()
@@ -19,7 +21,7 @@ function askPrompt()
     trueSize = canvasSize*canvasSize;   
 };
 
-
+/* Takes user input, calculates from the given canvasSize and creates a grid of squares */
 function createGrid()
 {
     if (canvasSize <= 100)
@@ -49,7 +51,7 @@ function createGrid()
     }
 };
 
-/*If the color picker is touched, it enters this onchange event*/
+/*If the color picker is touched, it enters this onchange event. If clauses to check which buttons are pressed and to act accordingly*/
   document.getElementById("colorPickerStyle").onchange = e =>
     {
         changedColor = document.getElementById('colorPickerStyle').value;
@@ -62,7 +64,7 @@ function createGrid()
         (
             'mouseover', e => 
         {  
-            var target = e.target
+            let target = e.target
             if ((e.buttons & 1) === 1 && target !== contGrids && defaultColor == false && rainbowToggle == false && eraserToggle == false)
             {
                 target.style.backgroundColor = changedColor;
@@ -93,12 +95,13 @@ function randomizeColor()
     return  color;
 }
 
-
+/* Not an elegent solution, but if the color picker isn't touched - it goes straight to this event which acts the same as the first one
+but without the color picker */
 contGrids.addEventListener
 (
     'mouseover', e => 
     {  
-        var target = e.target
+        let target = e.target
         if ((e.buttons & 1) === 1 && target !== contGrids && defaultColor == true)
         {
             target.style.backgroundColor = 'rgba(32, 150, 211, 1)'
@@ -115,7 +118,7 @@ contGrids.addEventListener
 );
 
 
-
+/* all the buttons*/
 
 resetButton.addEventListener
 (
@@ -158,7 +161,7 @@ rainbowButton.onclick = function ()
 }
 
 
-
+/* Initialising needed functions. Do while loop to make sure that the user inputs the needed value */
 
 do
 {
