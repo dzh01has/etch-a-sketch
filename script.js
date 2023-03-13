@@ -1,9 +1,16 @@
 var canvasSize; 
 var trueSize = canvasSize*canvasSize;
+var eraserToggle = false;
+var rainbowToggle = false;
+var defaultColor = true;
 const contGrids = document.querySelector('.contGrids');
 const square = document.createElement('div');
 const resetButton = document.getElementById('btn');
 const resizeButton = document.getElementById('btn2');
+const eraserButton = document.getElementById('btn3');
+const rainbowButton = document.getElementById('btn4');
+var changedColor;
+var toggleNewColor = false;
 
 
 function askPrompt()
@@ -42,6 +49,36 @@ function createGrid()
     }
 };
 
+/*If the color picker is touched, it enters this onchange event*/
+  document.getElementById("colorPickerStyle").onchange = e =>
+    {
+        changedColor = document.getElementById('colorPickerStyle').value;
+        defaultColor = false;
+        toggleNewColor = true;
+        rainbowToggle = false;
+        eraserToggle = false;
+
+        contGrids.addEventListener
+        (
+            'mouseover', e => 
+        {  
+            var target = e.target
+            if ((e.buttons & 1) === 1 && target !== contGrids && defaultColor == false && rainbowToggle == false && eraserToggle == false)
+            {
+                target.style.backgroundColor = changedColor;
+            }
+            else if ((e.buttons & 1) === 1 && target !== contGrids && rainbowToggle == true)
+            {
+                target.style.backgroundColor = randomizeColor();
+            }
+            else if ((e.buttons & 1) === 1 && target !== contGrids && eraserToggle == true)
+            {
+                target.style.backgroundColor = 'rgba(20, 144, 153, 0.274)'
+            }
+        }
+        );
+    }
+
 
 function randomizeColor()
 {
@@ -60,14 +97,24 @@ function randomizeColor()
 contGrids.addEventListener
 (
     'mouseover', e => 
-    {
+    {  
         var target = e.target
-        if (target !== contGrids)
+        if ((e.buttons & 1) === 1 && target !== contGrids && defaultColor == true)
+        {
+            target.style.backgroundColor = 'rgba(32, 150, 211, 1)'
+        }
+        else if ((e.buttons & 1) === 1 && target !== contGrids && rainbowToggle == true)
         {
             target.style.backgroundColor = randomizeColor();
         }
+        else if ((e.buttons & 1) === 1 && target !== contGrids && eraserToggle == true)
+        {
+            target.style.backgroundColor = 'rgba(20, 144, 153, 0.274)'
+        }
     }
 );
+
+
 
 
 resetButton.addEventListener
@@ -93,6 +140,24 @@ resizeButton.addEventListener
         createGrid();
     }
 );
+
+eraserButton.onclick = function ()
+{
+    defaultColor = false;
+    eraserToggle = true;
+    rainbowToggle = false;
+    toggleNewColor = false;    
+}
+
+rainbowButton.onclick = function ()
+{
+    defaultColor = false;
+    rainbowToggle = true;
+    eraserToggle = false;
+    toggleNewColor = false;    
+}
+
+
 
 
 do
