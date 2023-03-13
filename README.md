@@ -5,7 +5,8 @@ This ToP project is supposed to exercise DOM manipulation and be challenging to 
 
 Edit #1: Almost done with the project!
 
-To do: 
+To do:
+
 -improve aesthetics/visual design
 
 -add comments in code
