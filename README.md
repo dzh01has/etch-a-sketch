@@ -12,3 +12,5 @@ To do:
 -add comments in code
 
 Will revisit once fully finished.
+
+Edit #2: Finished the project. Overall, it was very difficult starting from scratch and not being hand held along the way. Took me longer than it should have, but in the end I got it. It was very rewarding when things worked out, after spending hours trying to come up with solutions. I'd say this was the most difficult project yet, but equally fun too. Excited for what comes next.
