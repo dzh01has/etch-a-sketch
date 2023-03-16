@@ -3,8 +3,8 @@
 
 body
 {
-    /*background:url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat;*/
-    background:url(./backgroundImage/FrutigerAero2.png) no-repeat;
+    background:url(https://images.unsplash.com/photo-1544306094-e2dcf9479da3) no-repeat;
+    /*background:url(./backgroundImage/FrutigerAero2.png) no-repeat;*/
     background-size: 100vw;
     -webkit-user-drag: none;
     user-select: none;
@@ -117,8 +117,7 @@ button:hover {
   }
 
 
-
-
+/* Color picker stuff */
   .clrContainer
   {
     height: 60px;
@@ -190,6 +189,8 @@ button:hover {
     cursor: pointer;
   }
 
+
+  /* permahover used to paint over cells*/
 .permahover 
 {
     background-color: black;
